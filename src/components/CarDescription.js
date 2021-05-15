@@ -20,6 +20,8 @@ import Container from "@material-ui/core/Container";
 import Button from '@material-ui/core/Button';
 import { Redirect } from "react-router-dom";
 import NotFoundPage from "../pages/404";
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,12 +49,12 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: green[600],
   },
-  buttonek:{
+  buttonek: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around'
     
-  }
+   }
 }));
 
 const piclinks = [
@@ -75,17 +77,16 @@ export default function RecipeReviewCard(props) {
   const [carDesc, setData] = useState({});
   let href = ""
   let user = localStorage.getItem('userId');
-  console.log(user)
 
-  if(!user)
+  if (!user)
     href = "/SignIn"
   else
-  href = `/Checkout/${props.match.params.id}`;
+    href = `/Checkout/${props.match.params.id}`;
 
   useEffect(() => {
     const fetchData = async () => {
       console.log(props.match.params.id);
-      const request = await api.request(API_TYPES.CAR).fetchById("/"+props.match.params.id);
+      const request = await api.request(API_TYPES.CAR).fetchById("/" + props.match.params.id);
       setData(request.data);
       console.log(request.data);
     };
