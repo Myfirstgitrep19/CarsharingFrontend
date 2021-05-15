@@ -43,10 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function renameKey(obj, oldKey, newKey) {
-  obj[newKey] = obj[oldKey];
-  delete obj[oldKey];
-}
 
 export const CarGridList = (props) => {
     const classes = useStyles();
