@@ -94,8 +94,10 @@ async function sendTransaction(ReviewData) {
     IsEnd:false,
     IsReturned:false,
     StartDate:new Date(ReviewData.startDate),
-    EndDate:new Date(1995,11,17)
+    EndDate:new Date(ReviewData.endDate),
   }
+  console.log("newTransaction")
+  console.log(newTransaction)
   await api.request(API_TYPES.TRANSACTIONS).create(newTransaction).then(response=>{
     if(response.data == "Ok"){
       Modal(response.data);
@@ -136,8 +138,6 @@ export default function Checkout(props) {
         ...prevState,
         CarDesc: request.data
       }));
-
-
     };
 
     fetchData();
