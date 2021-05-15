@@ -41,6 +41,11 @@ export default function Review(props) {
     { name: 'Expiry date', detail: props.value.expDate },
   ];
 
+  let days = new Date(props.value.endDate)- new Date(props.value.startDate) 
+  days = days / (1000 * 3600 * 24);
+  console.log(days)
+  console.log(props.value)
+
   return (
     <Container maxWidth="sm" className={classes.container}>
     <React.Fragment>
@@ -57,7 +62,7 @@ export default function Review(props) {
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            {props.value.CarDesc.priceDay}
+            {props.value.CarDesc.priceDay *days}
           </Typography>
         </ListItem>
       </List>
@@ -69,7 +74,7 @@ export default function Review(props) {
           <Typography gutterBottom>{props.value.firstName} {props.value.lastName} </Typography>
           <Typography gutterBottom>{addresses.join(', ')}</Typography>
         </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
+        {/* <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Payment details
           </Typography>
@@ -85,7 +90,7 @@ export default function Review(props) {
               </React.Fragment>
             ))}
           </Grid>
-        </Grid>
+        </Grid> */}
       </Grid>
     </React.Fragment>
     </Container>

@@ -31,28 +31,30 @@ export default function PaymentForm(props) {
           id="datetime-local"
           label="Next appointment"
           type="datetime-local"
-          defaultValue={new Date().toISOString()}
+          value={props.value.startDate}
+          // defaultValue={new Date().toISOString()}
           name="startDate"
           className={classes.textField}
           onChange={props.onChange}
           InputLabelProps={{
             shrink: true,
             onChange: props.onChange
-            // onChange={props.onChange}
+            
           }}
         />
 <TextField
           id="datetime-local"
           label="Next appointment"
           type="datetime-local"
-          defaultValue="2017-05-24T10:30"
+          value={props.value.endDate}
+          // defaultValue={new Date().toISOString()}
           name="endDate"
           className={classes.textField}
           onChange={props.onChange}
           InputLabelProps={{
             shrink: true,
             onChange: props.onChange
-            // onChange={props.onChange}
+       
           }}
         />
 

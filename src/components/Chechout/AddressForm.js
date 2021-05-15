@@ -92,7 +92,7 @@ export default function CheckoutAddressForm(props) {
               onChange={props.onChange}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField 
             value={props.value.state}
             id="state" 
@@ -102,7 +102,7 @@ export default function CheckoutAddressForm(props) {
             autoComplete="State/Province/Region"
             onChange={props.onChange}
             />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               value={props.value.zip}
@@ -115,7 +115,7 @@ export default function CheckoutAddressForm(props) {
               onChange={props.onChange}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               value={props.value.country}
               required
@@ -126,13 +126,13 @@ export default function CheckoutAddressForm(props) {
               autoComplete="shipping country"
               onChange={props.onChange}
             />
-          </Grid>
-          <Grid item xs={12}>
+          </Grid> */}
+          {/* <Grid item xs={12}>
             <FormControlLabel
               control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
               label="Use this address for payment details"
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </React.Fragment>
     </Container>
