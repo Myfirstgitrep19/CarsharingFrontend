@@ -1,37 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: 80,
-  }
-
+  },
 }));
 /**
- * 
+ *
  */
 export default function CheckoutAddressForm(props) {
   const classes = useStyles();
 
-  // function handleChange(e) {
-  //   // Here, we invoke the callback with the new value
-  //   props.onChange(e.target.name, e.target.value);
-  // }
-
-
   return (
     <Container maxWidth="sm" className={classes.container}>
-
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
           Shipping address
-      </Typography>
+        </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -92,17 +82,6 @@ export default function CheckoutAddressForm(props) {
               onChange={props.onChange}
             />
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
-            <TextField 
-            value={props.value.state}
-            id="state" 
-            name="state" 
-            label="State/Province/Region" 
-            fullWidth 
-            autoComplete="State/Province/Region"
-            onChange={props.onChange}
-            />
-          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               value={props.value.zip}
@@ -115,24 +94,6 @@ export default function CheckoutAddressForm(props) {
               onChange={props.onChange}
             />
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
-            <TextField
-              value={props.value.country}
-              required
-              id="country"
-              name="country"
-              label="Country"
-              fullWidth
-              autoComplete="shipping country"
-              onChange={props.onChange}
-            />
-          </Grid> */}
-          {/* <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-              label="Use this address for payment details"
-            />
-          </Grid> */}
         </Grid>
       </React.Fragment>
     </Container>

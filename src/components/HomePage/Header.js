@@ -1,14 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import { useHistory, Redirect } from "react-router-dom";
-import LoginButton from "../Auth0Login";
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 import LogoutButton from "../Auth0Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -20,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
+    justifyContent: "space-between",
+    overflowX: "auto",
   },
   toolbarLink: {
     padding: theme.spacing(1),
@@ -29,53 +25,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Header(props) {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const classes = useStyles();
   const { sections, title } = props;
-  let userPortal = localStorage.getItem('user');
-  // let token = localStorage.getItem('token');
+  let userPortal = localStorage.getItem("user");
   let userSocial;
   if (!isLoading && isAuthenticated) {
     userSocial = user.sub;
-    if(userPortal==undefined){
-      localStorage.setItem('userId',userSocial);
+    if (userPortal == undefined) {
+      localStorage.setItem("userId", userSocial);
     }
   }
 
-
-  let history = useHistory();
   const logOutButton = () => {
     return (
       <React.Fragment>
-        <LogoutButton variant="outlined" size="small">Wyloguj</LogoutButton>
+        <LogoutButton variant="outlined" size="small">
+          Wyloguj
+        </LogoutButton>
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   const logInButton = () => {
     return (
       <React.Fragment>
         <Button variant="outlined" size="small" href="/SignIn">
           Zaloguj przez portal
-            </Button>
-        {/* <LoginButton/> */}
+        </Button>
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   let ButtonS;
-  if (isAuthenticated ||userPortal !=undefined) {
+  if (isAuthenticated || userPortal != undefined) {
     ButtonS = logOutButton;
   } else {
     ButtonS = logInButton;
   }
-  // const logOut = (props) => {
-  //   localStorage.removeItem('user');
-  //   localStorage.removeItem('token');
-  //   history.push('/')
-  // };
 
   return (
     <React.Fragment>
@@ -90,14 +78,13 @@ export default function Header(props) {
         >
           {title}
         </Typography>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
         <ButtonS />
-
-
       </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+      <Toolbar
+        component="nav"
+        variant="dense"
+        className={classes.toolbarSecondary}
+      >
         {sections.map((section) => (
           <Link
             color="inherit"
